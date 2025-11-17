@@ -178,12 +178,12 @@ def postorderstack(node:TreeNode):
     stack = []
     ans = []
     curr = node
+    last_visited = None
     while stack or curr:
         while curr:
             stack.append(curr)
             curr = curr.left
         peek_node = stack[-1]
-        last_visited = ans.pop() if ans else None
         if peek_node.right and peek_node.right!=last_visited:
             curr = peek_node.right
         else:
