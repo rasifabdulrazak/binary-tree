@@ -191,3 +191,59 @@ def postorderstack(node:TreeNode):
             last_visited = stack.pop()
     return ans
 print(postorderstack(A),"=======")
+
+
+# BFS
+# =========
+#       1
+#    2      3
+#  4   5  10
+# output => [[1],[2,3],[4,5,10]]
+def bfs_travesal(node:TreeNode):
+    if not node: return
+    que = [node]
+    ans = []
+    
+    while que:
+        lev_arr = []
+        lev_size = len(que)
+        for i in range(lev_size):
+            cur = que.pop(0)
+            lev_arr.append(cur.val)
+            if cur.left : que.append(cur.left)
+            if cur.right : que.append(cur.right)
+        ans.append(lev_arr)
+    return ans
+        
+
+print(bfs_travesal(A))
+
+    
+# BFS
+# =========
+#       1
+#    2      3
+#  4   5  10
+# zigzag => [[1],[3,2],[4,5,10]]
+
+def bfs_zigzag_travesal(node:TreeNode):
+    if not node: return []
+    que = [node]
+    ans = []
+    level = 0
+    while que:
+        level_size = len(que)
+        level_array = []
+        for i in range(level_size):
+            curr = que.pop(0)
+            level_array.append(curr.val)
+            if curr.left: que.append(curr.left)
+            if curr.right: que.append(curr.right)
+        if level%2==1:
+            level_array.reverse()
+        ans.append(level_array)
+        level += 1
+            
+    return ans
+
+print(bfs_zigzag_travesal(A))
