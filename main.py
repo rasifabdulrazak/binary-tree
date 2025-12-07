@@ -213,10 +213,11 @@ def bfs_travesal(node:TreeNode):
             if cur.left : que.append(cur.left)
             if cur.right : que.append(cur.right)
         ans.append(lev_arr)
+        # ans.reverse()
     return ans
         
 
-print(bfs_travesal(A))
+print(bfs_travesal(A),"proroororor")
 
     
 # BFS
@@ -247,3 +248,42 @@ def bfs_zigzag_travesal(node:TreeNode):
     return ans
 
 print(bfs_zigzag_travesal(A))
+
+
+# recursion
+def ok():
+    ans = []
+    def rec(node:TreeNode,level:int):
+        if level == len(ans):
+            ans.append([])
+        ans[level].append(node.val)
+        if node.left: rec(node.left,level=level+1)
+        if node.right: rec(node.right,level=level+1)
+        return ans
+    rec(A,0)
+    return ans
+
+print(ok())
+    
+
+# Max_depth of a binary tree
+# top-down approach
+def max_dept(node:TreeNode):
+    max_depth = 0
+    curr = node
+    def traverse(curr,depth):
+        max_dept = max(max_dept,depth)
+        if curr.left: traverse(curr.left,depth=depth+1)
+        if curr.right: traverse(curr.right,depth=depth+1)
+        
+    traverse(curr,max_depth)
+    return max_depth
+
+
+# max depth
+# bottom up approach
+def max_depth_b(node:TreeNode):
+    if not node: return 0
+    left_max = max_depth_b(node.left)
+    right_max = max_depth_b(node.right)
+    return 1 + max(left_max,right_max) 
