@@ -14,11 +14,11 @@ class TreeNode:
 
 A = TreeNode(1)
 B = TreeNode(2)
-C = TreeNode(3)
-D = TreeNode(4)
-E = TreeNode(5)
-F = TreeNode(10)
-
+C = TreeNode(2)
+D = TreeNode(3)
+E = TreeNode(4)
+F = TreeNode(4)
+G = TreeNode(3)
 #       1
 #    2      3
 #  4   5  10
@@ -28,6 +28,7 @@ A.right = C
 B.left = D
 B.right = E
 C.left = F
+C.right = G
 
 # inorder => left->node->right
 # 4,2,5,1,10,3
@@ -287,3 +288,28 @@ def max_depth_b(node:TreeNode):
     left_max = max_depth_b(node.left)
     right_max = max_depth_b(node.right)
     return 1 + max(left_max,right_max) 
+
+def symmetric_tree_recursion(node:TreeNode):
+    def isSymmetric(left,right):
+        if not left and not right: return True
+        if not left or not right: return False
+        return left.val == right.val and isSymmetric(left.right,right.left) and isSymmetric(left.left,right.right)
+    return isSymmetric(node.left,node.right)
+
+print(symmetric_tree_recursion(A))
+
+
+def symmetric_tree_loop(node:TreeNode):
+    que = [node.left,node.right]
+    while que:
+        p1 = que.pop(0)
+        p2 = que.pop(0)
+        
+        if not p1 or not p2: continue
+        if p1.val != p2.val: return False
+        
+        que.extend([p1.left,p2.right])
+        que.extend([p1.right,p2.left])
+    return True
+
+print(symmetric_tree_loop(A))
