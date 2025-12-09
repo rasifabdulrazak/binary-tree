@@ -289,6 +289,7 @@ def max_depth_b(node:TreeNode):
     right_max = max_depth_b(node.right)
     return 1 + max(left_max,right_max) 
 
+# symmetric recursion
 def symmetric_tree_recursion(node:TreeNode):
     def isSymmetric(left,right):
         if not left and not right: return True
@@ -298,7 +299,7 @@ def symmetric_tree_recursion(node:TreeNode):
 
 print(symmetric_tree_recursion(A))
 
-
+# Symmetric loop
 def symmetric_tree_loop(node:TreeNode):
     que = [node.left,node.right]
     while que:
