@@ -264,7 +264,7 @@ def ok():
     rec(A,0)
     return ans
 
-print(ok())
+# print(ok())
     
 
 # Max_depth of a binary tree
