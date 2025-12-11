@@ -344,7 +344,8 @@ def balancedBinaryTree(node:TreeNode):
         if left==-1: return -1
         right = dfs(node.right)
         if right == -1: return -1
-        if abs(left-right) >= -1: return -1
+        if abs(left-right) > 1: return -1
+        return max(left,right)+1
     return dfs(node=node) != -1
 
 print(balancedBinaryTree(A))
