@@ -335,3 +335,16 @@ def isSameTree(node1:TreeNode,node2:TreeNode):
             isSameTree(node1.right,node2.right)
             
 print(isSameTree(A,A))
+
+def balancedBinaryTree(node:TreeNode):
+
+    def dfs(node:TreeNode):
+        if not node: return 0
+        left = dfs(node.left)
+        if left==-1: return -1
+        right = dfs(node.right)
+        if right == -1: return -1
+        if abs(left-right) >= -1: return -1
+    return dfs(node=node) != -1
+
+print(balancedBinaryTree(A))
