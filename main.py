@@ -314,3 +314,24 @@ def symmetric_tree_loop(node:TreeNode):
     return True
 
 print(symmetric_tree_loop(A))
+
+
+# Invert a binary tree
+def invert_binary_tree(node:TreeNode):
+    if not node: return None
+    node.left,node.right = node.right,node.left
+    invert_binary_tree(node.left)
+    invert_binary_tree(node.right)
+    return node
+
+print(invert_binary_tree(A))
+
+# Is both tree same
+def isSameTree(node1:TreeNode,node2:TreeNode):
+    if not node1 and not node2: return True
+    if not node1 or not node2: return False
+    return node1.val == node2.val and \
+        isSameTree(node1.left,node2.left) and \
+            isSameTree(node1.right,node2.right)
+            
+print(isSameTree(A,A))
