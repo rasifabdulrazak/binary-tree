@@ -348,4 +348,4 @@ def balancedBinaryTree(node:TreeNode):
         return max(left,right)+1
     return dfs(node=node) != -1
 
-print(balancedBinaryTree(A))
+print(balancedBinaryTree(A)) 
