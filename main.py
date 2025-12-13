@@ -17,7 +17,7 @@ B = TreeNode(2)
 C = TreeNode(2)
 D = TreeNode(3)
 E = TreeNode(4)
-F = TreeNode(4)
+F = TreeNode(9)
 G = TreeNode(3)
 #       1
 #    2      3
@@ -208,7 +208,7 @@ def bfs_travesal(node:TreeNode):
     while que:
         lev_arr = []
         lev_size = len(que)
-        for i in range(lev_size):
+        for _ in range(lev_size):
             cur = que.pop(0)
             lev_arr.append(cur.val)
             if cur.left : que.append(cur.left)
@@ -264,7 +264,7 @@ def ok():
     rec(A,0)
     return ans
 
-# print(ok())
+print(ok(),"=-----------------------")
     
 
 # Max_depth of a binary tree
@@ -364,3 +364,21 @@ def maximumDaimeter(node:TreeNode):
     return max_daimeter
 
 print(maximumDaimeter(A))
+
+
+def zigzag_level_travel_recurssion(node:TreeNode):
+    if not node: return []
+    ans = []
+    def zig(node,level):
+        if level == len(ans):
+            ans.append([])
+        if level%2==0: ans[level].append(node.val)
+        else: ans[level].insert(0,node.val)
+        if node.left: zig(node.left,level=level+1)
+        if node.right: zig(node.right,level=level+1)
+        return ans
+    zig(A,0)
+    return ans
+
+
+print(zigzag_level_travel_recurssion(A),"[[[[[[[[[[[[]]]]]]]]]]]]")
