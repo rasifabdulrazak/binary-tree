@@ -349,3 +349,18 @@ def balancedBinaryTree(node:TreeNode):
     return dfs(node=node) != -1
 
 print(balancedBinaryTree(A)) 
+
+def maximumDaimeter(node:TreeNode):
+    max_daimeter = 0
+    def findDepth(curr):
+        nonlocal max_daimeter
+        if not curr: return 0
+        left = findDepth(curr.left)
+        right = findDepth(curr.right)
+        curr_diameter = left + right
+        max_daimeter = max(curr_diameter,max_daimeter)
+        return 1 + max(left,right)
+    findDepth(node)
+    return max_daimeter
+
+print(maximumDaimeter(A))
