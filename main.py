@@ -381,4 +381,4 @@ def zigzag_level_travel_recurssion(node:TreeNode):
     return ans
 
 
-print(zigzag_level_travel_recurssion(A),"[[[[[[[[[[[[]]]]]]]]]]]]")
+print(zigzag_level_travel_recurssion(A))
