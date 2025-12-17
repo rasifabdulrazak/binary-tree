@@ -381,4 +381,28 @@ def zigzag_level_travel_recurssion(node:TreeNode):
     return ans
 
 
-print(zigzag_level_travel_recurssion(A)  )
+print(zigzag_level_travel_recurssion(A))
+
+
+def subtree_of_another(root:TreeNode,subRoot:TreeNode):
+    root_hash = serialize(root)
+    subr_hash = serialize(subRoot)
+    print(root_hash,"====",subr_hash)
+    return subr_hash in root_hash
+
+
+def serialize(curr):
+    hash_ = ''
+    def traverse(curr):
+        nonlocal hash_
+        if not curr:
+            hash_ += '-#'
+            return
+        hash_ = hash_ + '-' + str(curr.val)
+        traverse(curr.left)
+        traverse(curr.right)
+    traverse(curr)
+    return  hash_
+
+print(subtree_of_another(A,B))
+        
