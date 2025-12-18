@@ -401,7 +401,7 @@ def serialize(curr):
         hash_ = hash_ + '-' + str(curr.val)
         traverse(curr.left)
         traverse(curr.right)
-    traverse(curr)
+    traverse(curr) 
     return  hash_
 
 print(subtree_of_another(A,B))
