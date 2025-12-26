@@ -392,7 +392,7 @@ def subtree_of_another(root:TreeNode,subRoot:TreeNode):
 
 
 def serialize(curr):
-    hash_ = ''
+    hash_ = '' 
     def traverse(curr):
         nonlocal hash_
         if not curr:
