@@ -391,7 +391,7 @@ def subtree_of_another(root:TreeNode,subRoot:TreeNode):
     return subr_hash in root_hash
 
  
-def serialize(curr): 
+def serialize(curr):  
     hash_ = '' 
     def traverse(curr):
         nonlocal hash_
@@ -404,5 +404,5 @@ def serialize(curr):
     traverse(curr) 
     return  hash_
 
-print(subtree_of_another(A,B)) 
-           
+print(subtree_of_another(A,B))
+print("")
